@@ -1,11 +1,15 @@
-## Liberar SSL pelo cloudflare alternativa
+Aquí tienes la traducción al español del texto y los comentarios en el código, respetando la estructura original:
 
-## RODAR OS COMANDOS ABAIXO ##
+---
 
+## Liberar SSL mediante Cloudflare como alternativa
+
+## EJECUTAR LOS COMANDOS A CONTINUACIÓN ##
 
 ```bash
 sudo apt-get update
 ```
+
 ```bash
 sudo apt-get install certbot
 ```
@@ -18,17 +22,17 @@ sudo apt-get install python3-certbot-dns-cloudflare
 sudo apt-get install python3-certbot-nginx
 ```
 
-Criar esse arquivo com dados abaixo, com nano para salvar aperta Ctrl + x
+Crear este archivo con los datos abajo, con nano para guardar presiona Ctrl + x
 ```bash
 nano cloudflare.ini
 ```
 
 ```bash
-dns_cloudflare_email = teu email
-dns_cloudflare_api_key = tua api
+dns_cloudflare_email = tu email
+dns_cloudflare_api_key = tu api
 ```
 
-exemplo usando usuario deploy, casom for outro trocar dados
+Ejemplo usando el usuario deploy, si es otro usuario cambia los datos
 ```bash
 mkdir -p /home/deploy/.secrets/certbot/
 ```
@@ -38,7 +42,7 @@ mv cloudflare.ini /home/deploy/.secrets/certbot
 ```
 
 ```bash
-sudo certbot certonly --dns-cloudflare --dns-cloudflare-credentials /home/deploy/.secrets/certbot/cloudflare.ini -d frontend.seudominio.com.br -d backend.seudominio.com.br --dns-cloudflare-propagation-seconds 60
+sudo certbot certonly --dns-cloudflare --dns-cloudflare-credentials /home/deploy/.secrets/certbot/cloudflare.ini -d frontend.tudominio.com -d backend.tudominio.com --dns-cloudflare-propagation-seconds 60
 ```
 
 ```bash

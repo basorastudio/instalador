@@ -1,15 +1,15 @@
 #!/bin/bash
 # 
-# functions for setting up app frontend
+# funciones para configurar el frontend de la aplicación
 
 #######################################
-# installed node packages
-# Arguments:
-#   None
+# instala los paquetes de node
+# Argumentos:
+#   Ninguno
 #######################################
 frontend_node_dependencies() {
   print_banner
-  printf "${WHITE} 💻 Instalando dependências do frontend...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Instalando dependencias del frontend...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -24,7 +24,7 @@ EOF
 
 frontend_quasar() {
   print_banner
-  printf "${WHITE} 💻 Instalando dependências do frontend...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Instalando dependencias del frontend...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -38,13 +38,13 @@ EOF
 }
 
 #######################################
-# compiles frontend code
-# Arguments:
-#   None
+# compila el código del frontend
+# Argumentos:
+#   Ninguno
 #######################################
 frontend_node_build() {
   print_banner
-  printf "${WHITE} 💻 Compilando o código do frontend...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Compilando el código del frontend...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -61,18 +61,18 @@ EOF
 
 
 #######################################
-# sets frontend environment variables
-# Arguments:
-#   None
+# configura las variables de entorno del frontend
+# Argumentos:
+#   Ninguno
 #######################################
 frontend_set_env() {
   print_banner
-  printf "${WHITE} 💻 Configurando variáveis de ambiente (frontend)...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Configurando variables de entorno (frontend)...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
 
-  # ensure idempotency
+  # asegurar idempotencia
   backend_url=$(echo "${backend_url/https:\/\/}")
   backend_url=${backend_url%%/*}
   backend_url=https://$backend_url
@@ -88,10 +88,10 @@ EOF
 }
 
 #######################################
-# starts frontend using pm2 in 
-# production mode.
-# Arguments:
-#   None
+# inicia el frontend usando pm2 en 
+# modo producción.
+# Argumentos:
+#   Ninguno
 #######################################
 frontend_start_pm2() {
   print_banner
@@ -110,9 +110,9 @@ EOF
 }
 
 #######################################
-# sets up nginx for frontend
-# Arguments:
-#   None
+# configura nginx para el frontend
+# Argumentos:
+#   Ninguno
 #######################################
 frontend_nginx_setup() {
   print_banner

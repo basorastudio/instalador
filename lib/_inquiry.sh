@@ -2,14 +2,14 @@
 
 get_frontend_url() {
   print_banner
-  printf "${WHITE} 💻 Digite o domínio da interface web (Frontend):${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Introduce el dominio de la interfaz web (Frontend):${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " frontend_url
 }
 
 get_backend_url() {
   print_banner
-  printf "${WHITE} 💻 Digite o domínio da sua API (Backend):${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Introduce el dominio de tu API (Backend):${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " backend_url
 }
@@ -47,13 +47,13 @@ inquiry_options() {
 
   print_banner
   printf "\n\n"
-  printf "${WHITE} 💻 O que você precisa fazer?${GRAY_LIGHT}"
+  printf "${WHITE} 💻 ¿Qué necesitas hacer?${GRAY_LIGHT}"
   printf "\n\n"
   printf "   [1] Instalar\n"
-  printf "   [2] Atualizar whazing(antes de atualizar faça um Snapshots da VPS\n"
-  printf "   [3] Ativar Firewall\n"
-  printf "   [4] Desativar Firewall\n"
-  printf "   [5] Erro global/pg_filenode.map\n"
+  printf "   [2] Actualizar Whazing (antes de actualizar, haz un Snapshot de la VPS)\n"
+  printf "   [3] Activar Firewall\n"
+  printf "   [4] Desactivar Firewall\n"
+  printf "   [5] Error global/pg_filenode.map\n"
   printf "\n"
   read -p "> " option
 
@@ -85,4 +85,3 @@ inquiry_options() {
     *) exit ;;
   esac
 }
-

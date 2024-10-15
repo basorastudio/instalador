@@ -1,15 +1,15 @@
 #!/bin/bash
 # 
-# system management
+# gestión del sistema
 
 #######################################
-# creates user
-# Arguments:
-#   None
+# crea el usuario
+# Argumentos:
+#   Ninguno
 #######################################
 system_create_user() {
   print_banner
-  printf "${WHITE} 💻 Agora, vamos criar o usuário para deploy...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Ahora, vamos a crear el usuario para el despliegue...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -25,7 +25,7 @@ EOF
 
 instalacao_firewall() {
   print_banner
-  printf "${WHITE} 💻 Agora, vamos instalar e ativar firewall UFW...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Ahora, vamos a instalar y activar el firewall UFW...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -70,7 +70,7 @@ EOF
 
 parar_firewall() {
   print_banner
-  printf "${WHITE} 💻 Parando Firewall(atenção seu servidor ficara desprotegido)...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Deteniendo Firewall (atención, su servidor quedará desprotegido)...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -84,13 +84,13 @@ EOF
 }
 
 #######################################
-# set timezone
-# Arguments:
-#   None
+# configurar zona horaria
+# Argumentos:
+#   Ninguno
 #######################################
 system_set_timezone() {
   print_banner
-  printf "${WHITE} 💻 Setando timezone...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Configurando zona horaria...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -103,13 +103,13 @@ EOF
 }
 
 #######################################
-# unzip whazing
-# Arguments:
-#   None
+# descomprimir whazing
+# Argumentos:
+#   Ninguno
 #######################################
 system_unzip_whazing() {
   print_banner
-  printf "${WHITE} 💻 Fazendo clone whazing...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Clonando whazing...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -128,7 +128,7 @@ EOF
 
 erro_banco() {
   print_banner
-  printf "${WHITE} 💻 Estamos corrigindo...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Corrigiendo...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -145,7 +145,7 @@ EOF
 
 apagar_distsrc() {
   print_banner
-  printf "${WHITE} 💻 Apagando arquivos versao anterior${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Eliminando archivos de la versión anterior${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -162,13 +162,13 @@ EOF
 }
 
 #######################################
-# updates whazing
-# Arguments:
-#   None
+# actualiza whazing
+# Argumentos:
+#   Ninguno
 #######################################
 git_update() {
   print_banner
-  printf "${WHITE} 💻 Atualizando o whazing do git...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Actualizando whazing desde git...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -187,13 +187,13 @@ EOF
 }
 
 #######################################
-# updates system
-# Arguments:
-#   None
+# actualiza el sistema
+# Argumentos:
+#   Ninguno
 #######################################
 system_update() {
   print_banner
-  printf "${WHITE} 💻 Vamos atualizar o sistema...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Vamos a actualizar el sistema...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -209,9 +209,9 @@ EOF
 }
 
 #######################################
-# installs node
-# Arguments:
-#   None
+# instala node.js
+# Argumentos:
+#   Ninguno
 #######################################
 system_node_install() {
   print_banner
@@ -229,9 +229,9 @@ EOF
 }
 
 #######################################
-# installs docker
-# Arguments:
-#   None
+# instala docker
+# Argumentos:
+#   Ninguno
 #######################################
 system_docker_install() {
   print_banner
@@ -242,13 +242,13 @@ system_docker_install() {
 
   sudo su - root <<EOF
   sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
+  sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+  sudo chmod a+r /etc/apt/keyrings/docker.asc
   echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update
+  sudo apt-get update
   apt install -y docker-ce
 EOF
 
@@ -256,25 +256,19 @@ EOF
 }
 
 #######################################
-# Ask for file location containing
-# multiple URL for streaming.
-# Globals:
-#   WHITE
-#   GRAY_LIGHT
-#   BATCH_DIR
-#   PROJECT_ROOT
-# Arguments:
-#   None
+# instala dependencias de puppeteer
+# Argumentos:
+#   Ninguno
 #######################################
 system_puppeteer_dependencies() {
   print_banner
-  printf "${WHITE} 💻 Instalando puppeteer dependencies...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Instalando dependencias de puppeteer...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
 
   sudo su - root <<EOF
-apt install -y ffmpeg ufw apt-transport-https ca-certificates software-properties-common curl libgbm-dev wget unzip fontconfig locales gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils python2-minimal build-essential libxshmfence-dev nginx  
+  apt install -y ffmpeg ufw apt-transport-https ca-certificates software-properties-common curl libgbm-dev wget unzip fontconfig locales gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils python2-minimal build-essential libxshmfence-dev nginx  
 EOF
 
   sleep 2
@@ -282,7 +276,7 @@ EOF
 
 system_pm2_stop() {
   print_banner
-  printf "${WHITE} 💻 Parando o whazing...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Deteniendo whazing...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -296,7 +290,7 @@ EOF
 
 system_pm2_start() {
   print_banner
-  printf "${WHITE} 💻 Iniciando o whazing...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Iniciando whazing...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -308,11 +302,10 @@ EOF
   sleep 2
 }
 
-
 #######################################
-# installs pm2
-# Arguments:
-#   None
+# instala pm2
+# Argumentos:
+#   Ninguno
 #######################################
 system_pm2_install() {
   print_banner
@@ -331,9 +324,9 @@ EOF
 }
 
 #######################################
-# installs snapd
-# Arguments:
-#   None
+# instala snapd
+# Argumentos:
+#   Ninguno
 #######################################
 system_snapd_install() {
   print_banner
@@ -352,9 +345,9 @@ EOF
 }
 
 #######################################
-# installs certbot
-# Arguments:
-#   None
+# instala certbot
+# Argumentos:
+#   Ninguno
 #######################################
 system_certbot_install() {
   print_banner
@@ -373,9 +366,9 @@ EOF
 }
 
 #######################################
-# installs nginx
-# Arguments:
-#   None
+# instala nginx
+# Argumentos:
+#   Ninguno
 #######################################
 system_nginx_install() {
   print_banner
@@ -392,13 +385,13 @@ EOF
 }
 
 #######################################
-# install_chrome
-# Arguments:
-#   None
+# actualizar el sistema
+# Argumentos:
+#   Ninguno
 #######################################
 system_set_user_mod() {
   print_banner
-  printf "${WHITE} 💻 Vamos atualizar o sistema...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Vamos a actualizar el sistema...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -413,7 +406,7 @@ EOF
 
 criar_cron() {
   print_banner
-  printf "${WHITE} 💻 Criar cron...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Crear cron...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -426,13 +419,13 @@ EOF
 }
 
 #######################################
-# restarts nginx
-# Arguments:
-#   None
+# reinicia nginx
+# Argumentos:
+#   Ninguno
 #######################################
 system_nginx_restart() {
   print_banner
-  printf "${WHITE} 💻 reiniciando nginx...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Reiniciando nginx...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -445,13 +438,13 @@ EOF
 }
 
 #######################################
-# setup for nginx.conf
-# Arguments:
-#   None
+# configurar nginx.conf
+# Argumentos:
+#   Ninguno
 #######################################
 system_nginx_conf() {
   print_banner
-  printf "${WHITE} 💻 configurando nginx...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Configurando nginx...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -469,9 +462,9 @@ EOF
 }
 
 #######################################
-# installs nginx
-# Arguments:
-#   None
+# configura certbot
+# Argumentos:
+#   Ninguno
 #######################################
 system_certbot_setup() {
   print_banner
@@ -496,13 +489,13 @@ EOF
 }
 
 #######################################
-# reboot
-# Arguments:
-#   None
+# reinicia el sistema
+# Argumentos:
+#   Ninguno
 #######################################
 system_reboot() {
   print_banner
-  printf "${WHITE} 💻 Reboot...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Reiniciando...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -515,13 +508,13 @@ EOF
 }
 
 #######################################
-# creates docker db
-# Arguments:
-#   None
+# inicia los contenedores docker
+# Argumentos:
+#   Ninguno
 #######################################
 system_docker_start() {
   print_banner
-  printf "${WHITE} 💻 Iniciando container docker...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Iniciando contenedores docker...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -537,13 +530,13 @@ EOF
 }
 
 #######################################
-# creates docker db
-# Arguments:
-#   None
+# reinicia los contenedores docker
+# Argumentos:
+#   Ninguno
 #######################################
 system_docker_restart() {
   print_banner
-  printf "${WHITE} 💻 Iniciando container docker...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Reiniciando contenedores docker...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -558,43 +551,41 @@ EOF
   sleep 60
 }
 
-
-
 #######################################
-# creates final message
-# Arguments:
-#   None
+# muestra el mensaje final de éxito
+# Argumentos:
+#   Ninguno
 #######################################
 system_success() {
 
 echo $deploy_password > /root/senhadeploy
 
   print_banner
-  printf "${GREEN} 💻 Instalação concluída com Sucesso...${NC}"
+  printf "${GREEN} 💻 Instalación completada con éxito...${NC}"
   printf "${CYAN_LIGHT}";
   printf "\n\n"
   printf "\n"
-  printf "Usuário: admin@admin.com"
+  printf "Usuario: admin@admin.com"
   printf "\n"
-  printf "Senha: 123456"
+  printf "Contraseña: 123456"
   printf "\n"
-  printf "URL front: https://$frontend_domain"
+  printf "URL frontend: https://$frontend_domain"
   printf "\n"
-  printf "URL back: https://$backend_domain"
+  printf "URL backend: https://$backend_domain"
   printf "\n"
-  printf "Acesso ao Portainer: http://$frontend_domain:9000"
+  printf "Acceso a Portainer: http://$frontend_domain:9000"
   printf "\n"
-  printf "Senha Usuario deploy: $deploy_password"
+  printf "Contraseña del usuario deploy: $deploy_password"
   printf "\n"
-  printf "Usuario do Banco de Dados: whazing"
+  printf "Usuario de la base de datos: whazing"
   printf "\n"
-  printf "Nome do Banco de Dados: postgres"
+  printf "Nombre de la base de datos: postgres"
   printf "\n"
-  printf "Senha do Banco de Dados: $pg_pass"
+  printf "Contraseña de la base de datos: $pg_pass"
   printf "\n"
-  printf "Senha do Redis: $redis_pass"
+  printf "Contraseña de Redis: $redis_pass"
   printf "\n"
-  printf "Senha do Rabbit: $rabbit_pass"
+  printf "Contraseña de RabbitMQ: $rabbit_pass"
   printf "\n"
   printf "${NC}";
 

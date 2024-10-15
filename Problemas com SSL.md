@@ -1,6 +1,3 @@
-Aquí tienes la traducción al español del texto y los comentarios en el código, respetando la estructura original:
-
----
 
 ## Liberar SSL mediante Cloudflare como alternativa
 

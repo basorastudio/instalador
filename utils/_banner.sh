@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# Print banner art.
+# Imprimir arte de banner.
 
 #######################################
-# Print a board. 
-# Globals:
+# Imprimir un tablero. 
+# Globales:
 #   BG_BROWN
 #   NC
 #   WHITE
@@ -12,8 +12,8 @@
 #   RED
 #   GREEN
 #   YELLOW
-# Arguments:
-#   None
+# Argumentos:
+#   Ninguno
 #######################################
 print_banner() {
 

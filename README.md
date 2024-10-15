@@ -1,39 +1,36 @@
-[![Grupo do WhatsApp](https://img.shields.io/badge/WhatsApp-Grupo%20Whazing-brightgreen.svg)](https://chat.whatsapp.com/KAk11eaAfRu6Bp13wQX6MB)
 
-**IMPORTANTE**: 
+[![Grupo de WhatsApp](https://img.shields.io/badge/WhatsApp-Grupo%20Whazing-brightgreen.svg)](https://chat.whatsapp.com/KAk11eaAfRu6Bp13wQX6MB)
 
-- [Termos de USO](https://github.com/cleitonme/Whazing-SaaS/blob/main/docs/TermosdeUso.md)
+**IMPORTANTE**:
 
-- [Contrato de Licença](https://github.com/cleitonme/Whazing-SaaS/blob/main/LICENSE)
+- [Términos de USO](https://github.com/cleitonme/Whazing-SaaS/blob/main/docs/TermosdeUso.md)
 
+- [Contrato de Licencia](https://github.com/cleitonme/Whazing-SaaS/blob/main/LICENSE)
 
+Versión gratis* - para siempre no tendrá bloqueos
 
-Versão grátis* - para sempre não tera bloqueios
+- Límites de la versión gratis: 10 usuarios y 2 canales
 
-- Limites da versão grátis 10 usuários e 2 canais
+Versión Premium*
 
+- No posee límites
 
-Versão Premium*
+- [Tabla de Valores versión premium y servicio de instalación](https://github.com/cleitonme/Whazing-SaaS/blob/main/docs/TabeladeValores.md)
 
--Não posso possui limites
-
--  [Tabela de Valores versão premium e serviço de instalação](https://github.com/cleitonme/Whazing-SaaS/blob/main/docs/TabeladeValores.md)
-
-## CRIAR SUBDOMINIO E APONTAR PARA O IP DA SUA VPS
+## CREAR SUBDOMINIO Y APUNTAR AL IP DE SU VPS
 
 Requisitos
 
-Ubuntu 20 com minimo 8GB memoria
-2 dns do backend e do frontend
+Ubuntu 20 con mínimo 8GB de memoria
+2 DNS del backend y del frontend
 
-
-## CHECAR PROPAGAÇÃO DO DOMÍNIO
+## VERIFICAR LA PROPAGACIÓN DEL DOMINIO
 
 https://dnschecker.org/
 
-## RODAR OS COMANDOS ABAIXO PARA INSTALAR
+## EJECUTAR LOS COMANDOS A CONTINUACIÓN PARA INSTALAR
 
-para evitar erros recomendados atualizar sistema e apos atualizar reniciar para evitar erros
+Para evitar errores, es recomendable actualizar el sistema y, después de actualizar, reiniciar para evitar errores
 ```bash
 sudo su root
 ```
@@ -43,8 +40,8 @@ apt -y update && apt -y upgrade
 ```bash
 reboot
 ```
- 
-Depois reniciar seguir com a instalacao
+
+Después de reiniciar, continuar con la instalación
 ```bash
 sudo su root
 ```
@@ -67,7 +64,7 @@ cd ./whazinginstalador
 sudo ./whazing
 ```
 
-## RODAR OS COMANDOS ABAIXO PARA ATUALIZAR
+## EJECUTAR LOS COMANDOS A CONTINUACIÓN PARA ACTUALIZAR
 ```bash
 sudo su root
 ```
@@ -81,16 +78,15 @@ cd ./whazinginstalador
 sudo ./whazing
 ```
 
-## Alterar Frontend
+## Modificar Frontend
 
-Use configuração do Menu empresas para alterar nome do site e LOGOS 
+Utilice la configuración del Menú de empresas para cambiar el nombre del sitio y los LOGOS
 
-## Erros
+## Errores
 
-Caso não inicie na primeira instalação use opção 2 para atualizar pode ser algum arquivo não baixou corretamente
+Si no se inicia en la primera instalación, use la opción 2 para actualizar. Puede ser que algún archivo no se haya descargado correctamente.
 
 "Internal server error: SequelizeConnectionError: could not open file \"global/pg_filenode.map\": Permission denied"
-
 ```bash
 docker container restart postgresql
 ```
@@ -101,27 +97,27 @@ docker exec -u root postgresql bash -c "chown -R postgres:postgres /var/lib/post
 docker container restart postgresql
 ```
 
-## Acesso Portainer gerar senha
-"Your Portainer instance timed out for security purposes. To re-enable your Portainer instance, you will need to restart Portainer."
+## Acceso a Portainer para generar contraseña
 
+"Su instancia de Portainer se agotó por motivos de seguridad. Para reactivar su instancia de Portainer, necesitará reiniciar Portainer."
 ```bash
 docker container restart portainer
 ```
 
-Depois acesse novamente url http://seuip:9000/
+Luego acceda nuevamente a la URL http://suip:9000/
 
-## Recomendação de VPS boa e barata
+## Recomendación de VPS buena y barata
 
--  [Powerful cloud VPS & Web hosting.](https://control.peramix.com/?affid=58)
+- [Powerful cloud VPS & Web hosting.](https://control.peramix.com/?affid=58)
 
-- Cupom 25% desconto "WHAZING"
+- Cupón 25% de descuento "WHAZING"
 
 ```bash
 WHAZING
 ```
 
-## Consultoria particular
+## Consultoría particular
 
-Para consultoria particular chamar (será cobrado por isso) 48 999416725 
+Para consultoría particular, contactar (esto tendrá un costo) al 48 999416725
 
-Versão api em bayles
+Versión API en bayles

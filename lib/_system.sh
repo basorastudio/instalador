@@ -96,7 +96,7 @@ system_set_timezone() {
   sleep 2
 
   sudo su - root <<EOF
-  timedatectl set-timezone America/Bogota
+  timedatectl set-timezone America/Santo_Domingo
 EOF
 
   sleep 2

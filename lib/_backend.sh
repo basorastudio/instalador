@@ -21,14 +21,14 @@ backend_db_create() {
   docker run --name postgresql \
                 -e POSTGRES_USER=whazing \
                 -e POSTGRES_PASSWORD=${pg_pass} \
-				-e TZ="America/Bogota" \
+				-e TZ="America/Santo_Domingo" \
                 -p 5432:5432 \
                 --restart=always \
                 -v /data:/var/lib/postgresql/data \
                 -d postgres
   docker exec -u root postgresql bash -c "chown -R postgres:postgres /var/lib/postgresql/data"
   docker run --name redis-whazing \
-                -e TZ="America/Bogota" \
+                -e TZ="America/Santo_Domingo" \
                 -p 6379:6379 \
                 --restart=always \
                 -d redis:latest redis-server \
@@ -83,7 +83,7 @@ PORT=3000
 # conexión con la base de datos
 DB_DIALECT=postgres
 DB_PORT=5432
-DB_TIMEZONE=-05:00
+DB_TIMEZONE=-04:00
 POSTGRES_HOST=localhost
 POSTGRES_USER=whazing
 POSTGRES_PASSWORD=${pg_pass}

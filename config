@@ -1,0 +1,6 @@
+senha=Azo9p394075*
+deploy_password=${senha}
+pg_pass=${senha}
+redis_pass=${senha}
+rabbit_pass=${senha}
+deploy_email=basorastudio@gmail.com

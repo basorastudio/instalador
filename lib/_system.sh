@@ -119,7 +119,7 @@ system_unzip_whazing() {
   sleep 2
 
   sudo su - deploy <<EOF
-  git clone https://github.com/basorastudio/Whazing-SaaS.git /home/deploy/whazing
+  git clone https://github.com/basorastudio/whazing.git /home/deploy/whazing
   cd /home/deploy/whazing
   unzip -o whazing.zip
   chmod 775 /home/deploy/whazing/ -Rf
@@ -184,7 +184,7 @@ git_update() {
   cd /home/deploy/whazing
   pm2 stop all
   rm whazing.zip
-  wget https://github.com/basorastudio/Whazing-SaaS/raw/refs/heads/main/whazing.zip
+  wget https://github.com/basorastudio/whazing/raw/refs/heads/main/whazing.zip
   unzip -o whazing.zip
   chmod 775 /home/deploy/whazing/ -Rf
 EOF
@@ -647,7 +647,7 @@ update_beta() {
   cd /home/deploy/whazing
   pm2 stop all
   rm whazing.zip
-  wget https://github.com/basorastudio/Whazing-SaaS-Beta/raw/refs/heads/main/whazing.zip
+  wget https://github.com/basorastudio/whazing-Beta/raw/refs/heads/main/whazing.zip
   unzip -o whazing.zip
   chmod 775 /home/deploy/whazing/ -Rf
 EOF

@@ -1,36 +1,57 @@
+[![Grupo do WhatsApp](https://img.shields.io/badge/WhatsApp-Grupo%20Whazing-brightgreen.svg)](https://chat.whatsapp.com/KAk11eaAfRu6Bp13wQX6MB)
 
-[![Grupo de WhatsApp](https://img.shields.io/badge/WhatsApp-Grupo%20Whazing-brightgreen.svg)](https://chat.whatsapp.com/KAk11eaAfRu6Bp13wQX6MB)
+**IMPORTANTE**: 
 
-**IMPORTANTE**:
+- [Términos de USO](https://github.com/basorastudio/Whazing-SaaS/blob/main/docs/TermosdeUso.md)
 
-- [Términos de USO](https://github.com/cleitonme/Whazing-SaaS/blob/main/docs/TermosdeUso.md)
+- [Contrato de Licencia](https://github.com/basorastudio/Whazing-SaaS/blob/main/LICENSE)
 
-- [Contrato de Licencia](https://github.com/cleitonme/Whazing-SaaS/blob/main/LICENSE)
 
-Versión gratis* - para siempre no tendrá bloqueos
 
-- Límites de la versión gratis: 10 usuarios y 2 canales
+Versión gratis*
+
+- Límites de la versión gratis 
+- 10 usuarios
+- 2 canales
+- Soporte WhatsApp Api Bayles
+- Soporte Facebook e Instagram y WebChat - VIA HUB - Necesario pagar mensualidad por canal dudas (48) 9941-6725
+- Verificar premium abajo para saber diferencias
 
 Versión Premium*
 
 - No posee límites
+- Kanban
+- Integración WebHook/N8N - TypeBot - Groq - ChatGPT - DeepSeek
+- Transcripción de audio
+- Tareas
+- Evaluación de atención
+- Generación PDF atención
+- Informe de tickets
+- Notas en tickets
+- Mensajes separados por filas
+- Transferir atención a ChatBot
+- Retirada mensaje "Enviado vía Whazing" en el módulo campañas
 
-- [Tabla de Valores versión premium y servicio de instalación](https://github.com/cleitonme/Whazing-SaaS/blob/main/docs/TabeladeValores.md)
+- Instalador versión premium TypeBot, N8N y Wordpress
+
+
+-  [Tabla de Valores versión premium y servicio de instalación](https://github.com/basorastudio/Whazing-SaaS/blob/main/docs/TabeladeValores.md)
 
 ## CREAR SUBDOMINIO Y APUNTAR AL IP DE SU VPS
 
 Requisitos
 
-Ubuntu 20 con mínimo 8GB de memoria
-2 DNS del backend y del frontend
+Ubuntu 20 con mínimo 8GB memoria
+2 dns del backend y del frontend
 
-## VERIFICAR LA PROPAGACIÓN DEL DOMINIO
+
+## CHECAR PROPAGACIÓN DEL DOMINIO
 
 https://dnschecker.org/
 
-## EJECUTAR LOS COMANDOS A CONTINUACIÓN PARA INSTALAR
+## EJECUTAR LOS COMANDOS ABAJO PARA INSTALAR
 
-Para evitar errores, es recomendable actualizar el sistema y, después de actualizar, reiniciar para evitar errores
+para evitar errores recomendamos actualizar sistema y después de actualizar reiniciar para evitar errores
 ```bash
 sudo su root
 ```
@@ -40,8 +61,8 @@ apt -y update && apt -y upgrade
 ```bash
 reboot
 ```
-
-Después de reiniciar, continuar con la instalación
+ 
+Después de reiniciar seguir con la instalación
 ```bash
 sudo su root
 ```
@@ -52,7 +73,7 @@ apt install git
 cd /root
 ```
 ```bash
-git clone https://github.com/basorastudio/instalador.git whazinginstalador
+git clone https://github.com/basorastudio/Whazing-SaaS.instalador.git whazinginstalador
 ```
 ```bash
 sudo chmod +x ./whazinginstalador/whazing
@@ -60,11 +81,23 @@ sudo chmod +x ./whazinginstalador/whazing
 ```bash
 cd ./whazinginstalador
 ```
+
+## Importante cambiar contraseñas predeterminadas para evitar ataques
+
+Editar datos con sus datos, con nano para guardar presione Ctrl + x
+O con acceso vps por la aplicación que prefiera
+
+- Use solo letras y números, no use caracteres especiales
+
+```bash
+nano config
+```
+
 ```bash
 sudo ./whazing
 ```
 
-## EJECUTAR LOS COMANDOS A CONTINUACIÓN PARA ACTUALIZAR
+## EJECUTAR LOS COMANDOS ABAJO PARA ACTUALIZAR
 ```bash
 sudo su root
 ```
@@ -78,15 +111,16 @@ cd ./whazinginstalador
 sudo ./whazing
 ```
 
-## Modificar Frontend
+## Cambiar Frontend
 
-Utilice la configuración del Menú de empresas para cambiar el nombre del sitio y los LOGOS
+Use configuración del Menú empresas para cambiar nombre del sitio y LOGOS 
 
 ## Errores
 
-Si no se inicia en la primera instalación, use la opción 2 para actualizar. Puede ser que algún archivo no se haya descargado correctamente.
+En caso de no iniciar en la primera instalación use opción 2 para actualizar puede ser algún archivo no se descargó correctamente
 
 "Internal server error: SequelizeConnectionError: could not open file \"global/pg_filenode.map\": Permission denied"
+
 ```bash
 docker container restart postgresql
 ```
@@ -97,27 +131,32 @@ docker exec -u root postgresql bash -c "chown -R postgres:postgres /var/lib/post
 docker container restart postgresql
 ```
 
-## Acceso a Portainer para generar contraseña
+## Acceso Portainer generar contraseña
+"Your Portainer instance timed out for security purposes. To re-enable your Portainer instance, you will need to restart Portainer."
 
-"Su instancia de Portainer se agotó por motivos de seguridad. Para reactivar su instancia de Portainer, necesitará reiniciar Portainer."
 ```bash
 docker container restart portainer
 ```
 
-Luego acceda nuevamente a la URL http://suip:9000/
+Después acceda nuevamente url http://seuip:9000/
 
 ## Recomendación de VPS buena y barata
 
-- [Powerful cloud VPS & Web hosting.](https://control.peramix.com/?affid=58)
+-  [Powerful cloud VPS & Web hosting.](https://control.peramix.com/?affid=58)
 
-- Cupón 25% de descuento "WHAZING"
+- Cupón 25% descuento "WHAZING"
 
 ```bash
 WHAZING
 ```
 
+#### ¿Te gustó? ¡Apoya el proyecto! Con tu donación, será posible continuar con las actualizaciones. Sigue el código QR (PIX)  
+
+[<img src="donate.jpg" height="160" width="180"/>](donate.jpg)
+
 ## Consultoría particular
 
-Para consultoría particular, contactar (esto tendrá un costo) al 48 999416725
+Para consultoría particular llamar (se cobrará por esto) 48 999416725 
 
-Versión API en bayles
+Versión api en bayles# Whazing-SaaS.instalador-main
+# chat-install

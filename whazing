@@ -1,0 +1,112 @@
+#!/bin/bash
+
+git pull
+
+# Verifica si existe el archivo /etc/os-release
+if [[ -f /etc/os-release ]]; then
+    # Carga la información del sistema
+    . /etc/os-release
+    OS_NAME=$ID
+    OS_VERSION=${VERSION_ID//\"/}  # Elimina comillas si existen
+else
+    echo "Error: No se pudo detectar la versión del sistema operativo."
+    exit 1
+fi
+
+# Verifica si el sistema es Ubuntu y si la versión es compatible
+if [[ "$OS_NAME" != "ubuntu" || ("$OS_VERSION" != "20.04" && "$OS_VERSION" != "22.04") ]]; then
+    echo "Error: Este script solo puede ejecutarse en Ubuntu 20.04 o 22.04."
+    echo "Sistema detectado: $OS_NAME $OS_VERSION"
+    exit 1
+fi
+
+echo "Sistema compatible detectado: $OS_NAME $OS_VERSION"
+echo "Continuando instalador..."
+sleep 1
+
+# Verifica si el sistema está esperando reinicio
+if [ -f /var/run/reboot-required ]; then
+    echo "⚠️  El sistema necesita reiniciarse antes de ejecutar este script."
+    echo "❌ Saliendo..."
+    exit 1
+fi
+
+echo "✅ No hay reinicios pendientes. Continuando la ejecución..."
+
+# reiniciar colores del shell
+tput init
+
+# https://stackoverflow.com/questions/59895/how-to-get-the-source-directory-of-a-bash-script-from-within-the-script-itself
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolver $SOURCE hasta que el archivo ya no sea un enlace simbólico
+  PROJECT_ROOT="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$PROJECT_ROOT/$SOURCE" # si $SOURCE era un enlace simbólico relativo, necesitamos resolverlo en relación con la ruta donde se encontraba el archivo de enlace
+done
+PROJECT_ROOT="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+
+# importaciones requeridas
+source "${PROJECT_ROOT}"/variables/manifest.sh
+source "${PROJECT_ROOT}"/utils/manifest.sh
+source "${PROJECT_ROOT}"/lib/manifest.sh
+
+# archivo de configuraciones de usuario
+if [[ ! -e "${PROJECT_ROOT}"/config ]]; then
+  cat << EOF > "${PROJECT_ROOT}"/config
+deploy_password=${deploy_password}
+EOF
+fi
+
+# este archivo contiene contraseñas
+sudo su - root <<EOF
+chown root:root "${PROJECT_ROOT}"/config
+chmod 700 "${PROJECT_ROOT}"/config
+EOF
+source "${PROJECT_ROOT}"/config
+
+# CLI interactiva
+inquiry_options
+
+# relacionado con dependencias
+system_update
+system_set_timezone
+system_puppeteer_dependencies
+system_sysctl
+system_node_install
+system_pm2_install
+system_docker_install
+instalacion_firewall
+system_snapd_install
+system_nginx_install
+system_certbot_install
+
+# configuración del sistema
+system_create_user
+
+# relacionado con el backend
+system_unzip_whazing
+system_set_user_mod
+backend_set_env
+backend_db_create
+backend_node_dependencies
+system_docker_restart
+backend_db_migrate
+backend_db_seed
+backend_start_pm2
+backend_nginx_setup
+
+# relacionado con el frontend
+frontend_set_env
+frontend_node_dependencies
+frontend_quasar
+frontend_node_build
+frontend_start_pm2
+frontend_nginx_setup
+
+# relacionado con la red
+crear_cron
+system_nginx_conf
+system_nginx_restart
+system_certbot_setup
+system_docker_restart
+system_success
